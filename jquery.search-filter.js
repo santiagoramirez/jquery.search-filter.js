@@ -1,6 +1,6 @@
 /*!
  * Plugin Name: searchFilter
- * Plugin Version: 0.0.0
+ * Plugin Version: 0.1.0
  * Author Santiago Ramirez
  */
 jQuery.fn.searchFilter = function(options) {
@@ -9,17 +9,17 @@ jQuery.fn.searchFilter = function(options) {
 
         // SETTINGS
         url : '',
-        dataType : 'json',
         data : {},
+        dataType : 'json',
         autoUpdate : true,
-        storeLocally : false,
+        rememberSearch : false,
 
         // CONTROLS
-        nextSelector : jQuery(this).selector + " #next",
-        prevSelector : jQuery(this).selector + " #prev",
-        clearAllSelector : jQuery(this).selector + " #clear-all",
-        loadMoreSelector : jQuery(this).selector + " #load-more",
-        submitSelector : jQuery(this).selector + " #submit",
+        nextSelector : jQuery(this).selector + " .s-next",
+        prevSelector : jQuery(this).selector + " .s-prev",
+        clearAllSelector : jQuery(this).selector + " .s-clear-all",
+        loadMoreSelector : jQuery(this).selector + " .s-load-more",
+        submitSelector : jQuery(this).selector + " .s-submit",
 
         // PAGINATION
         pageVar : 'page',
@@ -28,7 +28,7 @@ jQuery.fn.searchFilter = function(options) {
 
         // CALLBACKS
         before : false,
-        after : false,
+        success : false,
         error : false,
     };
 
@@ -75,7 +75,7 @@ jQuery.fn.searchFilter = function(options) {
         }
 
         // Allow data to be stored locally
-        if (options.storeLocally === true) {
+        if (options.rememberSearch === true) {
             var storedData = getStoredData();
             if (storedData) {
                 options.data = storedData;
@@ -162,7 +162,7 @@ jQuery.fn.searchFilter = function(options) {
     var setParam = function(key, value) {
         if (value != "") {
             options.data[key] = value;
-            if (options.storeLocally === true) {
+            if (options.rememberSearch === true) {
                 storeData();
             }
         } else {
@@ -175,7 +175,7 @@ jQuery.fn.searchFilter = function(options) {
      */
     var deleteParam = function(key) {
         delete options.data[key];
-        if (options.storeLocally === true) {
+        if (options.rememberSearch === true) {
             storeData();
         }
     }
@@ -277,8 +277,8 @@ jQuery.fn.searchFilter = function(options) {
             data: options.data,
             dataType: options.dataType,
             success: function(data, textStatus, request) {
-                if (options.after) {
-                    options.after(data, textStatus, request);
+                if (options.success) {
+                    options.success(data, textStatus, request);
                 }
             },
             error: function(error) {
