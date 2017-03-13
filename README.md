@@ -7,7 +7,7 @@ Simple jQuery plugin for creating powerful search filters.
 
 **url**
 
-The url to send requests.
+The url to send the request.
 ```
 default : ''
 options : string
@@ -23,7 +23,7 @@ options : object
 
 **dataType**
 
-Rsponse data type.
+Response data type.
 ```
 default : 'json'
 options : 'json', 'html'
@@ -39,7 +39,7 @@ options : boolean (true / false)
 
 **rememberSearch**
 
-Remember the users's search.
+Remember the user's search.
 
 ```
 default : false
