@@ -140,3 +140,42 @@ See jQuery documentation for more info http://api.jquery.com/jquery.ajax/
 default : function() {},
 options : function(jqXHR, textStatus, error) { /* your code here */ }
 ```
+
+## Public methods
+
+**prev()**
+
+```
+searchFilter = $("#filter").searchFilter();
+searchFilter.prev();
+```
+
+**next**
+```
+searchFilter = $("#filter").searchFilter();
+searchFilter.next();
+```
+
+**goToPage**
+```
+searchFilter = $("#filter").searchFilter();
+searchFilter.goToPage(2);
+```
+
+**loadMore**
+```
+searchFilter = $("#filter").searchFilter();
+searchFilter.loadMore();
+```
+
+**clearAll**
+```
+searchFilter = $("#filter").searchFilter();
+searchFilter.clearAll();
+```
+
+**submit**
+```
+searchFilter = $("#filter").searchFilter();
+searchFilter.submit();
+```
