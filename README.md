@@ -53,7 +53,7 @@ options : boolean (true / false)
 Set the selector to use for the 'next' button.
 
 ```
-default : $(this).selector . ' .s-next',
+default : $(this).selector . ' .sf-next',
 options : jQuery selector
 ```
 
@@ -62,7 +62,7 @@ options : jQuery selector
 Set the selector to use for the 'previous' button.
 
 ```
-default : $(this).selector + ' .s-prev',
+default : $(this).selector + ' .sf-prev',
 options : jQuery selector
 ```
 
@@ -71,7 +71,7 @@ options : jQuery selector
 Set the selector to use for the 'clear all' button
 
 ```
-default : $(this).selector + ' .s-clear-all',
+default : $(this).selector + ' .sf-clear-all',
 options : jQuery selector
 ```
 
@@ -80,7 +80,7 @@ options : jQuery selector
 Set the selector to use for the 'load more' button
 
 ```
-default : $(this).selector + ' .s-load-more',
+default : $(this).selector + ' .sf-load-more',
 options : jQuery selector
 ```
 

@@ -1,7 +1,6 @@
 /*!
- * Plugin Name: searchFilter
- * Plugin Version: 0.1.0
- * Author Santiago Ramirez
+ * searchFilter v0.2.0
+ * Santiago Ramirez
  */
 jQuery.fn.searchFilter = function(options) {
 
@@ -15,11 +14,11 @@ jQuery.fn.searchFilter = function(options) {
         rememberSearch : false,
 
         // CONTROLS
-        nextSelector : jQuery(this).selector + " .s-next",
-        prevSelector : jQuery(this).selector + " .s-prev",
-        clearAllSelector : jQuery(this).selector + " .s-clear-all",
-        loadMoreSelector : jQuery(this).selector + " .s-load-more",
-        submitSelector : jQuery(this).selector + " .s-submit",
+        nextSelector : jQuery(this).selector + " .sf-next",
+        prevSelector : jQuery(this).selector + " .sf-prev",
+        clearAllSelector : jQuery(this).selector + " .sf-clear-all",
+        loadMoreSelector : jQuery(this).selector + " .sf-load-more",
+        submitSelector : jQuery(this).selector + " .sf-submit",
 
         // PAGINATION
         pageVar : 'page',
@@ -55,9 +54,9 @@ jQuery.fn.searchFilter = function(options) {
     ////////////////////////////////////////////////////////////////////////////
 
     var init = function() {
-        jQuery(this).find("ul.filter-list li").click(handleListItem);
-        jQuery(this).find("input.filter-input").doneTyping(handleInput, 500);
-        jQuery(this).find("select.filter-select").change(handleInput);
+        jQuery(this).find("ul.sf-list li").click(handleListItem);
+        jQuery(this).find("input.sf-input").doneTyping(handleInput, 500);
+        jQuery(this).find("select.sf-select").change(handleInput);
 
         // Set clear all selector
         if (options.clearAllSelector) {
@@ -202,14 +201,14 @@ jQuery.fn.searchFilter = function(options) {
      */
     var populateData = function() {
         // Reset values
-        jQuery(this).find("ul.filter-list li").removeClass("selected");
-        jQuery(this).find("input.filter-input").val("");
-        jQuery(this).find("select.filter-select").val("");
+        jQuery(this).find("ul.sf-list li").removeClass("selected");
+        jQuery(this).find("input.sf-input").val("");
+        jQuery(this).find("select.sf-select").val("");
 
         // Set new values
         for (key in options.data) {
             if (typeof options.data[key] === 'string' || options.data[key] instanceof String) {
-                var listItemElement = jQuery(this).find("ul.filter-list[data-name=\"" + key + "\"] li[data-value=\"" + options.data[key] +  "\"]");
+                var listItemElement = jQuery(this).find("ul.sf-list[data-name=\"" + key + "\"] li[data-value=\"" + options.data[key] +  "\"]");
                 var inputElement = jQuery(this).find("[name=\"" + key + "\"]");
                 if (listItemElement.length) {
                     listItemElement.addClass("selected");
