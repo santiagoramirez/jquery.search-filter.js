@@ -7,7 +7,10 @@ Simple jQuery plugin for creating powerful search filters.
 
 **url**
 
-The url to send the request.
+A string containing the URL to which the request is sent.
+
+See jQuery documentation for more info http://api.jquery.com/jquery.ajax/
+
 ```
 default : ''
 options : string
@@ -15,7 +18,10 @@ options : string
 
 **data**
 
-URL query string values.
+Data to be sent to the server.
+
+See jQuery documentation for more info http://api.jquery.com/jquery.ajax/
+
 ```
 default : {}
 options : object
@@ -23,7 +29,10 @@ options : object
 
 **dataType**
 
-Response data type.
+The type of data that you're expecting back from the server.
+
+See jQuery documentation for more info http://api.jquery.com/jquery.ajax/
+
 ```
 default : 'json'
 options : 'json', 'html'
@@ -90,7 +99,9 @@ options : jQuery selector
 
 **template**
 
-Point to an element which contains the Mustache template you'd like to use. Mustache can be downloaded from https://github.com/janl/mustache.js
+An element containing the Mustache template you'd like to use.
+
+Mustache can be downloaded from https://github.com/janl/mustache.js
 
 ```
 default : false
@@ -110,9 +121,22 @@ options : function(data) { /* your code here */ }
 
 **success**
 
-Executes if request is successful.
+A function to be called if the request succeeds.
+
+See jQuery documentation for more info http://api.jquery.com/jquery.ajax/
 
 ```
 default : function() {},
 options : function(data, textStatus, request) { /* your code here */ }
+```
+
+**error**
+
+A function to be called if the request fails.
+
+See jQuery documentation for more info http://api.jquery.com/jquery.ajax/
+
+```
+default : function() {},
+options : function(jqXHR, textStatus, error) { /* your code here */ }
 ```
