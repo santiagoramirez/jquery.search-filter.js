@@ -112,7 +112,7 @@ options : jQuery selector
 
 **before**
 
-Executes before request is sent.
+A function to be called before the request is sent.
 
 ```
 default : function() {},
