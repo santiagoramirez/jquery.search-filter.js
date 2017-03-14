@@ -179,3 +179,28 @@ searchFilter.clearAll();
 searchFilter = $("#filter").searchFilter();
 searchFilter.submit();
 ```
+
+## Filtering data
+
+**input**
+```
+<input type="text" class="sf-input" name="arg">
+```
+
+**select**
+```
+<select class="sf-select" name="arg">
+    <option value="option-1">Option 1</option>
+    <option value="option-2">Option 2</option>
+    <option value="option-3">Option 3</option>
+</select>
+```
+
+**list**
+```
+<ul class="sf-list" data-name="arg">
+    <li data-value="option-1">Option 1</li>
+    <li data-value="option-2">Option 2</li>
+    <li data-value="option-3">Option 3</li>
+</ul>
+```
