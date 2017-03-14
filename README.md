@@ -3,7 +3,7 @@ Simple jQuery plugin for creating powerful search filters.
 
 ## Options
 
-### General
+### Request
 
 **url**
 
@@ -28,6 +28,8 @@ Response data type.
 default : 'json'
 options : 'json', 'html'
 ```
+
+### Filter Settings
 
 **autoUpdate**
 
@@ -81,6 +83,26 @@ Set the selector to use for the 'load more' button
 
 ```
 default : $(this).selector + ' .sf-load-more',
+options : jQuery selector
+```
+
+### Templating
+
+**templateEngine**
+
+Choose template engine to use.
+
+```
+default : 'mustache'
+options : 'mustache'
+```
+
+**template**
+
+Point to an element which contains the template HTML (this will be replaced with the rendered HTML).
+
+```
+default : false
 options : jQuery selector
 ```
 

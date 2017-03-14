@@ -1,15 +1,17 @@
 /*!
- * searchFilter v0.2.0
+ * searchFilter v0.2.1
  * Santiago Ramirez
  */
 jQuery.fn.searchFilter = function(options) {
 
     var defaults = {
 
-        // SETTINGS
+        // REQUEST
         url : '',
         data : {},
         dataType : 'json',
+
+        // FILTER SETTINGS
         autoUpdate : true,
         rememberSearch : false,
 
@@ -24,6 +26,10 @@ jQuery.fn.searchFilter = function(options) {
         pageVar : 'page',
         perPageVar : 'per_page',
         offsetVar : 'offset',
+
+        // TEMPLATING
+        templateEngine : 'mustache',
+        template : false,
 
         // CALLBACKS
         before : false,
@@ -95,8 +101,18 @@ jQuery.fn.searchFilter = function(options) {
             }
         }
 
+        if (options.template) {
+            options.templateSelector = options.template;
+            options.template = jQuery(options.template).html();
+            Mustache.parse(options.template);
+            jQuery(options.templateSelector).html("");
+        }
+
         // Populate data
         populateData();
+
+        // Submit initial request
+        element.submit();
     }.bind(this);
 
     /**
@@ -278,6 +294,13 @@ jQuery.fn.searchFilter = function(options) {
             success: function(data, textStatus, request) {
                 if (options.success) {
                     options.success(data, textStatus, request);
+                }
+
+                if (options.template) {
+                    var rendered = Mustache.render(options.template, { data : data });
+                    jQuery(options.templateSelector).hide();
+                    jQuery(options.templateSelector).html(rendered);
+                    jQuery(options.templateSelector).fadeIn();
                 }
             },
             error: function(error) {
