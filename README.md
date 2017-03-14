@@ -88,18 +88,9 @@ options : jQuery selector
 
 ### Templating
 
-**templateEngine**
-
-Choose template engine to use.
-
-```
-default : 'mustache'
-options : 'mustache'
-```
-
 **template**
 
-Point to an element which contains the template HTML (this will be replaced with the rendered HTML).
+Point to an element which contains the Mustache template you'd like to use. Mustache can be downloaded from https://github.com/janl/mustache.js
 
 ```
 default : false

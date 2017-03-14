@@ -1,5 +1,5 @@
 /*!
- * searchFilter v0.2.1
+ * searchFilter v0.3.0
  * Santiago Ramirez
  */
 jQuery.fn.searchFilter = function(options) {
@@ -28,7 +28,6 @@ jQuery.fn.searchFilter = function(options) {
         offsetVar : 'offset',
 
         // TEMPLATING
-        templateEngine : 'mustache',
         template : false,
 
         // CALLBACKS
@@ -54,6 +53,9 @@ jQuery.fn.searchFilter = function(options) {
 
     // Current page
     var page;
+
+    // Boolean if Mustache has been defined or not
+    var mustacheDefined;
 
     ////////////////////////////////////////////////////////////////////////////
     // Private Functions
@@ -102,10 +104,16 @@ jQuery.fn.searchFilter = function(options) {
         }
 
         if (options.template) {
-            options.templateSelector = options.template;
-            options.template = jQuery(options.template).html();
-            Mustache.parse(options.template);
-            jQuery(options.templateSelector).html("");
+            if (typeof Mustache !== 'undefined') {
+                mustacheDefined = true;
+                options.templateSelector = options.template;
+                options.template = jQuery(options.template).html();
+                Mustache.parse(options.template);
+                jQuery(options.templateSelector).html("");
+            } else {
+                mustacheDefined = false;
+                console.error('Mustache is not defined. If you\'d like to use the built in Mustache integration, please include it before this script https://github.com/janl/mustache.js');
+            }
         }
 
         // Populate data
@@ -296,7 +304,7 @@ jQuery.fn.searchFilter = function(options) {
                     options.success(data, textStatus, request);
                 }
 
-                if (options.template) {
+                if (options.template && mustacheDefined) {
                     var rendered = Mustache.render(options.template, { data : data });
                     jQuery(options.templateSelector).hide();
                     jQuery(options.templateSelector).html(rendered);
